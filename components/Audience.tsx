@@ -34,34 +34,24 @@ const Audience: React.FC = () => {
         </div>
 
         <div className="bg-slate-50 rounded-3xl overflow-hidden shadow-lg border border-slate-100">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            <div className="p-8 md:p-12 flex flex-col justify-center order-2 lg:order-1">
-              <h4 className="text-2xl font-serif font-bold text-slate-900 mb-4">
-                {activeAudience.title}
-              </h4>
-              <p className="text-lg text-slate-600 mb-8">
-                {activeAudience.description}
-              </p>
-              
-              <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
-                <h5 className="font-semibold text-brand-800 mb-4 uppercase text-xs tracking-wider">Key Interventions</h5>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {activeAudience.services.map((service, idx) => (
-                    <li key={idx} className="flex items-center text-slate-700">
-                      <CheckCircle2 className="w-5 h-5 text-brand-500 mr-3 flex-shrink-0" />
-                      <span className="text-sm font-medium">{service}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="relative h-64 lg:h-auto order-1 lg:order-2">
-              <img 
-                src={activeAudience.image} 
-                alt={activeAudience.title}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-brand-900/10 mix-blend-multiply"></div>
+          <div className="p-8 md:p-12 flex flex-col justify-center">
+            <h4 className="text-2xl font-serif font-bold text-slate-900 mb-4 text-center">
+              {activeAudience.title}
+            </h4>
+            <p className="text-lg text-slate-600 mb-8 text-center max-w-3xl mx-auto">
+              {activeAudience.description}
+            </p>
+            
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+              <h5 className="font-semibold text-brand-800 mb-4 uppercase text-xs tracking-wider text-center md:text-left">Key Interventions</h5>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {activeAudience.services.map((service, idx) => (
+                  <li key={idx} className="flex items-center text-slate-700">
+                    <CheckCircle2 className="w-5 h-5 text-brand-500 mr-3 flex-shrink-0" />
+                    <span className="text-sm font-medium">{service}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>

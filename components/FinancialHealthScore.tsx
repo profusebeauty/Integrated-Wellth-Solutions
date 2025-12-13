@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calculator, Check, TrendingUp, ArrowRight, RefreshCcw, ShieldAlert, BarChart3 } from 'lucide-react';
+import { Target, Check, TrendingUp, ArrowRight, RefreshCcw, ShieldAlert, BarChart3, Brain } from 'lucide-react';
 
 type Option = {
   label: string;
@@ -15,38 +15,42 @@ type Question = {
 const QUESTIONS: Question[] = [
   {
     id: 1,
-    text: "How often do you review your business financial statements?",
+    text: "How clear is your business direction for the next 12–24 months?",
     options: [
-      { label: "Weekly or Monthly", score: 3 },
-      { label: "Only during tax season", score: 1 },
-      { label: "Rarely or never", score: 0 },
+      { label: "I have a documented plan with milestones and accountability", score: 3 },
+      { label: "I have clear goals but struggle with execution", score: 2 },
+      { label: "I have ideas but nothing written or tracked", score: 1 },
+      { label: "I have no documented goals or strategy", score: 0 },
     ]
   },
   {
     id: 2,
-    text: "Are all your employees registered with valid Income Tax Numbers for 2026 compliance?",
+    text: "How confident are you in understanding and managing your business finances?",
     options: [
-      { label: "Yes, fully verified", score: 3 },
-      { label: "Working on it / Unsure", score: 1 },
-      { label: "No", score: 0 },
+      { label: "I use financial reports (cash flow, budgets, forecasts) to guide decisions", score: 3 },
+      { label: "I have basic records but don’t use them for decisions", score: 2 },
+      { label: "I track income and expenses irregularly", score: 1 },
+      { label: "I don’t separate personal and business finances", score: 0 },
     ]
   },
   {
     id: 3,
-    text: "Do you have a clear strategy for VAT changes and cash flow?",
+    text: "How compliant and risk-ready is your business right now?",
     options: [
-      { label: "Yes, we have a forecast", score: 3 },
-      { label: "We have some ideas", score: 1 },
-      { label: "No strategy in place", score: 0 },
+      { label: "I’m fully compliant with systems in place to manage risk", score: 3 },
+      { label: "I’m compliant but reactive when issues arise", score: 2 },
+      { label: "I’m registered but behind on CIPC/SARS requirements", score: 1 },
+      { label: "I’m not registered or unsure of my compliance status", score: 0 },
     ]
   },
   {
     id: 4,
-    text: "How would you rate your current financial stress level?",
+    text: "How well do your systems support both performance and wellbeing?",
     options: [
-      { label: "Low - I feel in control", score: 3 },
-      { label: "Moderate - Occasional worry", score: 1 },
-      { label: "High - Keeps me up at night", score: 0 },
+      { label: "I have clear systems, delegation, and work-life balance", score: 3 },
+      { label: "My operations are structured but not optimised", score: 2 },
+      { label: "I have some systems but still feel stretched", score: 1 },
+      { label: "Everything depends on me and feels overwhelming", score: 0 },
     ]
   }
 ];
@@ -80,26 +84,37 @@ const FinancialHealthScore: React.FC = () => {
     const percentage = (totalScore / maxScore) * 100;
 
     if (percentage >= 80) return {
-      title: "Financial Fortress",
-      description: "You're in a strong position! Your financial habits are solid. Let's focus on advanced wealth preservation and growth strategies to maintain this edge.",
+      title: "Strategic Powerhouse",
+      description: "You have clear direction, financial control, and solid systems. Focus on advanced growth strategies and legacy building to maintain this momentum.",
       color: "text-emerald-600",
       bgColor: "bg-emerald-50",
       icon: TrendingUp
     };
     if (percentage >= 50) return {
-      title: "Growing Pains",
-      description: "You have a foundation, but gaps in compliance or cash flow visibility could hold you back. A few strategic adjustments will unlock significant peace of mind.",
+      title: "Growth in Progress",
+      description: "You have a foundation, but gaps in planning, compliance, or systems are creating friction. Targeted improvements will unlock capacity and peace of mind.",
       color: "text-amber-600",
       bgColor: "bg-amber-50",
       icon: BarChart3
     };
     return {
-      title: "Critical Care Needed",
-      description: "Your business health is at risk. Immediate action is recommended to secure cash flow and ensure 2026 tax compliance. We can help you turn this around.",
+      title: "Foundation Needs Focus",
+      description: "Your business is at risk due to gaps in strategy or compliance. Immediate action is needed to stabilize operations and reduce overwhelm.",
       color: "text-rose-600",
       bgColor: "bg-rose-50",
       icon: ShieldAlert
     };
+  };
+
+  const openCalendly = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if ((window as any).Calendly) {
+      (window as any).Calendly.initPopupWidget({
+        url: 'https://calendly.com/enquiries-integratedwellth/30min'
+      });
+    } else {
+      window.open('https://calendly.com/enquiries-integratedwellth/30min', '_blank');
+    }
   };
 
   const result = getResult();
@@ -114,11 +129,11 @@ const FinancialHealthScore: React.FC = () => {
           <div className="bg-slate-900 text-white p-10 md:w-2/5 flex flex-col justify-between relative overflow-hidden">
             <div className="relative z-10">
               <div className="inline-block p-3 bg-white/10 rounded-xl mb-6 backdrop-blur-sm">
-                <Calculator className="w-8 h-8 text-brand-400" />
+                <Target className="w-8 h-8 text-brand-400" />
               </div>
-              <h3 className="text-3xl font-serif font-bold mb-4">Financial Health Score</h3>
+              <h3 className="text-3xl font-serif font-bold mb-4">Business Clarity Check</h3>
               <p className="text-slate-300 leading-relaxed text-sm">
-                Discover your business's financial maturity in under 60 seconds. See how you stack up for 2026.
+                Assess your strategic direction, financial control, compliance, and operational wellbeing in minutes.
               </p>
             </div>
             
@@ -133,7 +148,7 @@ const FinancialHealthScore: React.FC = () => {
                  <div className="w-6 h-6 rounded-full bg-brand-500/20 flex items-center justify-center">
                    <Check className="w-4 h-4" /> 
                 </div>
-                Instant Analysis
+                Instant Insights
               </div>
               <div className="flex items-center gap-3 text-sm font-medium text-brand-200">
                  <div className="w-6 h-6 rounded-full bg-brand-500/20 flex items-center justify-center">
@@ -152,9 +167,9 @@ const FinancialHealthScore: React.FC = () => {
           <div className="p-8 md:p-12 md:w-3/5 flex flex-col justify-center min-h-[450px]">
             {step === 'intro' && (
               <div className="text-center animate-in fade-in duration-500">
-                <h4 className="text-2xl font-bold text-slate-900 mb-3">Is your business 2026-ready?</h4>
+                <h4 className="text-2xl font-bold text-slate-900 mb-3">Gain Clarity on Your Business</h4>
                 <p className="text-slate-500 mb-8">
-                  Take our quick diagnostic quiz to evaluate your cash flow, tax readiness, and financial strategy.
+                  Take our quick diagnostic check to evaluate your strategy, compliance readiness, and systems.
                 </p>
                 <button 
                   onClick={handleStart}
@@ -213,12 +228,12 @@ const FinancialHealthScore: React.FC = () => {
                 </p>
 
                 <div className="space-y-3">
-                  <a 
-                    href="#contact" 
+                  <button 
+                    onClick={openCalendly}
                     className="flex items-center justify-center w-full py-4 bg-brand-600 text-white font-bold rounded-xl hover:bg-brand-700 transition-colors shadow-lg hover:shadow-brand-500/20"
                   >
-                    Book a 15-Minute Review
-                  </a>
+                    Book a Strategy Review
+                  </button>
                   <button 
                     onClick={resetQuiz}
                     className="flex items-center justify-center gap-2 w-full py-3 text-slate-400 hover:text-slate-600 font-medium transition-colors text-sm"

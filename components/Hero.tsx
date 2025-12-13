@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { ArrowRight, Calendar } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
@@ -7,25 +7,25 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-brand-900/60 z-10"></div>
         <img 
-          src="https://picsum.photos/1920/1080?random=10" 
-          alt="Strategic Consulting Meeting" 
+          src="https://res.cloudinary.com/dka0498ns/image/upload/v1765644818/Accountability_Partnership._SMMEs_review_session._egzihs.jpg" 
+          alt="Accountability Partnership - Strategic Consulting Meeting" 
           className="w-full h-full object-cover opacity-60"
         />
       </div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center h-full min-h-[70vh]">
         <div className="max-w-3xl">
-          {/* Compliance Alert Banner */}
-          <a href="#blog" className="group block mb-8 bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 backdrop-blur-md hover:bg-amber-500/20 transition-all cursor-pointer">
+          {/* Upcoming Event Banner */}
+          <a href="#upcoming-event" className="group block mb-8 bg-brand-900/60 border border-brand-500/30 rounded-xl p-4 backdrop-blur-md hover:bg-brand-900/80 transition-all cursor-pointer">
             <div className="flex items-start gap-3">
-              <div className="p-1 bg-amber-500/20 rounded-full flex-shrink-0 mt-0.5">
-                <AlertTriangle className="w-5 h-5 text-amber-500" />
+              <div className="p-1 bg-brand-500/20 rounded-full flex-shrink-0 mt-0.5">
+                <Calendar className="w-5 h-5 text-brand-400" />
               </div>
               <div className="flex-1">
-                <p className="text-amber-100 font-bold text-sm mb-0.5">2026 Employer Compliance Alert</p>
-                <p className="text-amber-200/80 text-xs leading-relaxed">
-                  SARS Mandatory Income Tax Numbers deadline approaching. Submissions without numbers will be rejected. 
-                  <span className="text-amber-400 font-bold ml-1 group-hover:underline">Read the Blueprint <ArrowRight className="inline w-3 h-3 ml-0.5" /></span>
+                <p className="text-brand-100 font-bold text-sm mb-0.5">Upcoming Event: Financial Clarity Workshop</p>
+                <p className="text-brand-200/80 text-xs leading-relaxed">
+                  Join us on 28 Feb 2026 at Munyaka Waterfall City. 
+                  <span className="text-brand-400 font-bold ml-1 group-hover:underline">View Details <ArrowRight className="inline w-3 h-3 ml-0.5" /></span>
                 </p>
               </div>
             </div>

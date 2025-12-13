@@ -32,6 +32,19 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
     window.scrollTo(0, 0);
   };
 
+  const openCalendly = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if ((window as any).Calendly) {
+      (window as any).Calendly.initPopupWidget({
+        url: 'https://calendly.com/enquiries-integratedwellth/30min'
+      });
+    } else {
+      // Fallback if script hasn't loaded
+      window.open('https://calendly.com/enquiries-integratedwellth/30min', '_blank');
+    }
+    setIsOpen(false);
+  };
+
   return (
     <nav className="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,13 +70,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                 {link.name}
               </button>
             ))}
-            <a 
-              href="#contact"
-              onClick={() => handleLinkClick('#contact')}
+            <button 
+              onClick={openCalendly}
               className="ml-4 px-6 py-2.5 bg-brand-600 text-white text-sm font-bold rounded-full hover:bg-brand-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
             >
               Book Consultation
-            </a>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -92,7 +104,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
               </button>
             ))}
             <button
-              onClick={() => handleLinkClick('#contact')}
+              onClick={openCalendly}
               className="block mt-4 w-full text-center px-6 py-3 bg-brand-600 text-white font-bold rounded-lg hover:bg-brand-700 transition-colors"
             >
               Book Consultation

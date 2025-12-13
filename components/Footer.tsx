@@ -37,7 +37,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <ul className="space-y-3 text-sm mb-6">
                <li className="flex items-start gap-3">
                  <MapPin className="w-5 h-5 text-brand-600 flex-shrink-0" />
-                 <span>Fred Messenger Ave, Pretoria, Gauteng</span>
+                 <span>Fred Messenger Ave, Pretoria<br/>Gauteng, South Africa</span>
                </li>
                <li className="flex items-center gap-3">
                  <Phone className="w-5 h-5 text-brand-600 flex-shrink-0" />

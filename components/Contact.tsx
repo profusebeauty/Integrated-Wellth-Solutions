@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Facebook, Instagram, Clock, Calendar, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Instagram, Clock, ExternalLink } from 'lucide-react';
 
 const Contact: React.FC = () => {
   return (
@@ -15,14 +15,15 @@ const Contact: React.FC = () => {
               Whether you need to file your taxes, restructure your organization, or manage financial stress, our Pretoria team is here to help you move forward.
             </p>
 
-            <div className="space-y-6 mb-10">
+            {/* Semantic Address Wrapper for Local SEO */}
+            <address className="space-y-6 mb-10 not-italic">
               <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors">
                 <div className="bg-slate-800 p-3 rounded-lg flex-shrink-0">
                   <MapPin className="text-brand-400 w-6 h-6" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-lg text-white">Visit Our Offices</h4>
-                  <p className="text-slate-400">Fred Messenger Ave, Pretoria, Gauteng<br/>South Africa</p>
+                  <p className="text-slate-400">Fred Messenger Ave, Pretoria<br/>Gauteng, South Africa</p>
                 </div>
               </div>
               
@@ -55,7 +56,7 @@ const Contact: React.FC = () => {
                   <p className="text-slate-400">08:00 AM - 16:30 PM</p>
                 </div>
               </div>
-            </div>
+            </address>
 
             <div className="flex gap-4">
               <a href="https://www.facebook.com/share/17SByrB4zi/" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-800 rounded-full hover:bg-brand-600 transition-colors text-white hover:text-white" aria-label="Facebook">
@@ -72,69 +73,31 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white text-slate-900 rounded-2xl p-8 shadow-2xl border border-slate-100 relative overflow-hidden">
-            <h4 className="text-2xl font-serif font-bold mb-2">Book Your Consultation</h4>
-            <p className="text-slate-500 mb-6 text-sm">
-              Schedule a time directly or send us a message below.
+          <div className="bg-white text-slate-900 rounded-2xl p-4 shadow-2xl border border-slate-100 relative overflow-hidden flex flex-col">
+            <h4 className="text-2xl font-serif font-bold mb-2 px-4 pt-4">Book Your Consultation</h4>
+            <p className="text-slate-500 mb-6 text-sm px-4">
+              Schedule a 30-minute discovery call directly on our calendar.
             </p>
 
-            {/* Zoho Bookings Integration Area */}
-            <div className="mb-8 bg-brand-50 rounded-xl p-6 text-center border border-brand-100 border-dashed hover:border-brand-300 transition-colors group cursor-pointer">
-              <Calendar className="w-8 h-8 text-brand-600 mx-auto mb-3 group-hover:scale-110 transition-transform" />
-              <h5 className="font-bold text-slate-900 mb-1">Instant Online Scheduling</h5>
-              <p className="text-xs text-slate-600 mb-4">View real-time availability and book your 15-minute discovery call.</p>
-              <button 
-                onClick={(e) => e.preventDefault()}
-                className="inline-flex items-center px-6 py-2 bg-brand-600 text-white font-bold rounded-lg hover:bg-brand-700 transition-colors"
-              >
-                Launch Calendar (Zoho) <ArrowRight className="w-4 h-4 ml-2" />
-              </button>
-            </div>
-
-            <div className="flex items-center gap-4 mb-8">
-              <div className="h-px bg-slate-200 flex-1"></div>
-              <span className="text-xs font-bold text-slate-400 uppercase">Or Send a Message</span>
-              <div className="h-px bg-slate-200 flex-1"></div>
+            {/* Calendly Embed */}
+            <div className="flex-1 w-full min-h-[600px] bg-slate-50 rounded-lg overflow-hidden">
+               <div 
+                 className="calendly-inline-widget w-full h-full" 
+                 data-url="https://calendly.com/enquiries-integratedwellth/30min?hide_landing_page_details=1&hide_gdpr_banner=1" 
+                 style={{ minWidth: '320px', height: '100%' }} 
+               />
             </div>
             
-            {/* Form - Ready for Zoho CRM Webform Integration */}
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">First Name</label>
-                  <input type="text" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none" placeholder="John" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Last Name</label>
-                  <input type="text" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none" placeholder="Doe" />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                <input type="email" className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none" placeholder="john@company.com" />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">I need help with...</label>
-                <select className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none">
-                  <option>Financial Services & Tax</option>
-                  <option>Psychological Wellness</option>
-                  <option>Business Consulting</option>
-                  <option>NGO Support</option>
-                  <option>Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Message</label>
-                <textarea rows={4} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none" placeholder="Tell us a bit about your goals..."></textarea>
-              </div>
-
-              <button className="w-full py-3 bg-slate-900 text-white font-bold rounded-lg hover:bg-slate-800 transition-colors shadow-lg">
-                Submit Inquiry
-              </button>
-            </form>
+            <div className="text-center py-4">
+              <a 
+                href="https://calendly.com/enquiries-integratedwellth/30min" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center gap-2 text-brand-600 hover:text-brand-700 font-semibold text-sm hover:underline"
+              >
+                Open Calendar in New Tab <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
           </div>
         </div>
 

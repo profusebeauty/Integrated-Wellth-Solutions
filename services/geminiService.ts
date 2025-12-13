@@ -21,10 +21,12 @@ export const initializeChat = async () => {
   if (!ai) return null;
 
   try {
+    const dynamicContext = `${COMPANY_CONTEXT}\n\nCurrent Date and Time: ${new Date().toLocaleString('en-ZA', { timeZone: 'Africa/Johannesburg' })}. Ensure all advice considers the current date relative to the 2026 Employer Filing Season deadlines.`;
+
     chatSession = ai.chats.create({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3-pro-preview',
       config: {
-        systemInstruction: COMPANY_CONTEXT,
+        systemInstruction: dynamicContext,
         temperature: 0.7,
       },
     });

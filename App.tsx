@@ -9,13 +9,12 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ChatWidget from './components/ChatWidget';
 import Testimonials from './components/Testimonials';
-import LeadMagnet from './components/LeadMagnet';
 import BlogPost from './components/BlogPost';
 import WhatsAppButton from './components/WhatsAppButton';
 import FinancialHealthScore from './components/FinancialHealthScore';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import CookieConsent from './components/CookieConsent';
-import Systems from './components/Systems';
+import EventHighlight from './components/EventHighlight';
 
 type ViewState = 'home' | 'blog' | 'privacy';
 
@@ -54,14 +53,13 @@ function App() {
     content = (
       <main>
         <Hero />
+        <EventHighlight />
         <Philosophy />
         <Services onNavigate={handleNavigate} />
-        <Systems />
         <FinancialHealthScore />
         <Testimonials />
         <Audience />
         <Gallery />
-        <LeadMagnet />
         <Contact />
       </main>
     );

@@ -54,16 +54,16 @@ const Gallery: React.FC = () => {
         {/* Hero Gallery Image */}
         <div className="relative h-[400px] md:h-[600px] rounded-2xl overflow-hidden shadow-2xl mb-8 group">
           <img 
-            src="https://res.cloudinary.com/dka0498ns/image/upload/v1765321879/Integrated_Wellth_-_Women_empowerment_tahf5l.jpg" 
-            alt="Women Empowerment Event" 
+            src="https://res.cloudinary.com/dka0498ns/image/upload/v1765644818/Accountability_Partnership._SMMEs_review_session._egzihs.jpg" 
+            alt="Accountability Partnership - SMME Review Session" 
             loading="lazy"
             className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent flex items-end p-8 md:p-12">
              <div className="max-w-3xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-               <h4 className="text-white text-3xl md:text-5xl font-serif font-bold mb-4">Empowering Women & Communities</h4>
+               <h4 className="text-white text-3xl md:text-5xl font-serif font-bold mb-4">Accountability & Strategic Growth</h4>
                <p className="text-slate-200 text-lg md:text-xl font-light leading-relaxed">
-                 We believe in building wealth that goes beyond the bank account—fostering resilience, leadership, and lasting impact.
+                 We believe in building wealth that goes beyond the bank account—fostering resilience, leadership, and lasting impact through rigorous review sessions.
                </p>
              </div>
           </div>
