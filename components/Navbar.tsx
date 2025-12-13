@@ -10,9 +10,10 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
 
   const navLinks = [
     { name: 'Home', href: '#home' },
-    { name: 'Our Philosophy', href: '#philosophy' },
+    { name: 'Philosophy', href: '#philosophy' },
     { name: 'Services', href: '#services' },
     { name: 'Clients', href: '#audience' },
+    { name: 'Gallery', href: '#gallery' },
   ];
 
   const handleLinkClick = (href: string) => {

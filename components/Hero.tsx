@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2, AlertTriangle } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
@@ -15,6 +15,22 @@ const Hero: React.FC = () => {
 
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center h-full min-h-[70vh]">
         <div className="max-w-3xl">
+          {/* Compliance Alert Banner */}
+          <a href="#blog" className="group block mb-8 bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 backdrop-blur-md hover:bg-amber-500/20 transition-all cursor-pointer">
+            <div className="flex items-start gap-3">
+              <div className="p-1 bg-amber-500/20 rounded-full flex-shrink-0 mt-0.5">
+                <AlertTriangle className="w-5 h-5 text-amber-500" />
+              </div>
+              <div className="flex-1">
+                <p className="text-amber-100 font-bold text-sm mb-0.5">2026 Employer Compliance Alert</p>
+                <p className="text-amber-200/80 text-xs leading-relaxed">
+                  SARS Mandatory Income Tax Numbers deadline approaching. Submissions without numbers will be rejected. 
+                  <span className="text-amber-400 font-bold ml-1 group-hover:underline">Read the Blueprint <ArrowRight className="inline w-3 h-3 ml-0.5" /></span>
+                </p>
+              </div>
+            </div>
+          </a>
+
           <div className="inline-flex items-center gap-2 bg-brand-500/10 border border-brand-400/30 rounded-full px-4 py-1.5 mb-8 backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
             <span className="text-brand-100 font-semibold text-xs tracking-widest uppercase">Pretoria-Based Strategic Consultancy</span>
@@ -30,26 +46,13 @@ const Hero: React.FC = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-5 mb-16">
-            <a href="#contact" className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-lg text-brand-950 bg-brand-400 hover:bg-brand-300 transition-all shadow-xl hover:shadow-brand-500/20 transform hover:-translate-y-1">
+            <a href="#assessment" className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-lg text-brand-950 bg-brand-400 hover:bg-brand-300 transition-all shadow-xl hover:shadow-brand-500/20 transform hover:-translate-y-1">
               Book Your Free Assessment
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
             <a href="#services" className="inline-flex items-center justify-center px-8 py-4 border border-slate-600 text-base font-medium rounded-lg text-slate-200 hover:bg-white/5 hover:border-white transition-all backdrop-blur-sm">
               Explore Our Framework
             </a>
-          </div>
-        </div>
-
-        {/* Social Proof / Trusted By */}
-        <div className="border-t border-slate-800 pt-8 mt-auto">
-          <p className="text-sm text-slate-500 uppercase tracking-widest mb-6 font-semibold">Trusted by visionary organizations</p>
-          <div className="flex flex-wrap gap-8 md:gap-12 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-             {/* Placeholder Logos using text for simplicity in this demo */}
-             <div className="text-white font-serif font-bold text-xl">NexusStartups</div>
-             <div className="text-white font-serif font-bold text-xl">GlobalNGO</div>
-             <div className="text-white font-serif font-bold text-xl">TechFin Solutions</div>
-             <div className="text-white font-serif font-bold text-xl">Urban Growth</div>
-             <div className="text-white font-serif font-bold text-xl">Future Leaders</div>
           </div>
         </div>
       </div>

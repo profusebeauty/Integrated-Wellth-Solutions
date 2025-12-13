@@ -1,29 +1,61 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Sparkles, Loader2 } from 'lucide-react';
+import { MessageCircle, X, Send, Sparkles, Loader2, Trash2 } from 'lucide-react';
 import { sendMessageToGemini } from '../services/geminiService';
 import { ChatMessage } from '../types';
 
 const ChatWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      id: 'welcome',
-      role: 'model',
-      text: "Hello! I'm your Integrated Wellth Assistant. I can help you understand our holistic services, from tax compliance to stress management. How can I support your journey today?",
-      timestamp: new Date()
-    }
-  ]);
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Initialize messages from local storage
+  const [messages, setMessages] = useState<ChatMessage[]>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('iws_chat_history');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          // Convert string timestamps back to Date objects
+          return parsed.map((m: any) => ({
+            ...m,
+            timestamp: new Date(m.timestamp)
+          }));
+        } catch (e) {
+          console.error('Failed to parse chat history', e);
+        }
+      }
+    }
+    return [
+      {
+        id: 'welcome',
+        role: 'model',
+        text: "Hello! I'm your Integrated Wellth Assistant. I can help you understand our holistic services, from tax compliance to stress management. How can I support your journey today?",
+        timestamp: new Date()
+      }
+    ];
+  });
+
+  // Persist messages to local storage whenever they change
+  useEffect(() => {
+    localStorage.setItem('iws_chat_history', JSON.stringify(messages));
+    scrollToBottom();
+  }, [messages]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+  const clearChat = () => {
+    const initialMsg: ChatMessage = {
+      id: 'welcome',
+      role: 'model',
+      text: "Hello! I'm your Integrated Wellth Assistant. I can help you understand our holistic services, from tax compliance to stress management. How can I support your journey today?",
+      timestamp: new Date()
+    };
+    setMessages([initialMsg]);
+    localStorage.removeItem('iws_chat_history');
+  };
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
@@ -98,14 +130,23 @@ const ChatWidget: React.FC = () => {
         }`}
       >
         {/* Header */}
-        <div className="bg-brand-600 p-4 rounded-t-2xl flex items-center gap-3">
-          <div className="bg-white/20 p-2 rounded-full">
-            <Sparkles className="text-white w-5 h-5" />
+        <div className="bg-brand-600 p-4 rounded-t-2xl flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="bg-white/20 p-2 rounded-full">
+              <Sparkles className="text-white w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-white font-bold font-serif">Wellth Advisor</h3>
+              <p className="text-brand-100 text-xs">AI-Powered Assistant</p>
+            </div>
           </div>
-          <div>
-            <h3 className="text-white font-bold font-serif">Wellth Advisor</h3>
-            <p className="text-brand-100 text-xs">AI-Powered Assistant</p>
-          </div>
+          <button 
+            onClick={clearChat}
+            className="text-brand-100 hover:text-white p-2 rounded-full hover:bg-brand-700 transition-colors"
+            title="Clear History"
+          >
+            <Trash2 size={16} />
+          </button>
         </div>
 
         {/* Messages */}

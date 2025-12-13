@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Instagram, Clock, Calendar, ArrowRight } from 'lucide-react';
 
 const Contact: React.FC = () => {
   return (
@@ -32,7 +32,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-lg text-white">Email Us</h4>
-                  <a href="mailto:info@integratedwellth.co.za" className="text-slate-400 hover:text-brand-300 transition-colors">info@integratedwellth.co.za</a>
+                  <a href="mailto:enquiries@integratedwellth.co.za" className="text-slate-400 hover:text-brand-300 transition-colors">enquiries@integratedwellth.co.za</a>
                 </div>
               </div>
 
@@ -45,6 +45,16 @@ const Contact: React.FC = () => {
                   <a href="tel:+27812355910" className="text-slate-400 hover:text-brand-300 transition-colors">+27 (0) 81 235 5910</a>
                 </div>
               </div>
+
+              <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors">
+                <div className="bg-slate-800 p-3 rounded-lg flex-shrink-0">
+                  <Clock className="text-brand-400 w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-lg text-white">Operational Hours</h4>
+                  <p className="text-slate-400">08:00 AM - 16:30 PM</p>
+                </div>
+              </div>
             </div>
 
             <div className="flex gap-4">
@@ -55,7 +65,6 @@ const Contact: React.FC = () => {
                 <Instagram className="w-5 h-5" />
               </a>
               <a href="https://www.tiktok.com/@prestigemarciak?_r=1&_t=ZS-92596TEURxE" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-800 rounded-full hover:bg-brand-600 transition-colors text-white hover:text-white" aria-label="TikTok">
-                {/* Custom TikTok Icon */}
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.65-1.55-1.09-.01 2.52.01 5.03-.01 7.54-.09 2.84-1.5 5.51-3.9 6.72-2.42 1.27-5.36.97-7.58-.71-2.01-1.5-3.02-4.12-2.49-6.58.56-2.58 2.65-4.58 5.27-4.99.27-.05.54-.07.82-.07V13.9c-1.13.12-2.13.79-2.71 1.76-.57.97-.57 2.17-.03 3.16.53.98 1.55 1.62 2.66 1.66 1.12.02 2.16-.54 2.72-1.5.56-.95.53-2.14.07-3.13-.03-2.29-.01-4.57-.01-6.86-.01-1.04-.01-2.07-.01-3.1 0-1.89 0-3.78 0-5.67h3.91z"/>
                 </svg>
@@ -63,10 +72,32 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white text-slate-900 rounded-2xl p-8 shadow-2xl border border-slate-100">
+          <div className="bg-white text-slate-900 rounded-2xl p-8 shadow-2xl border border-slate-100 relative overflow-hidden">
             <h4 className="text-2xl font-serif font-bold mb-2">Book Your Consultation</h4>
-            <p className="text-slate-500 mb-6 text-sm">Fill in the details below and we'll get back to you within 24 hours.</p>
+            <p className="text-slate-500 mb-6 text-sm">
+              Schedule a time directly or send us a message below.
+            </p>
+
+            {/* Zoho Bookings Integration Area */}
+            <div className="mb-8 bg-brand-50 rounded-xl p-6 text-center border border-brand-100 border-dashed hover:border-brand-300 transition-colors group cursor-pointer">
+              <Calendar className="w-8 h-8 text-brand-600 mx-auto mb-3 group-hover:scale-110 transition-transform" />
+              <h5 className="font-bold text-slate-900 mb-1">Instant Online Scheduling</h5>
+              <p className="text-xs text-slate-600 mb-4">View real-time availability and book your 15-minute discovery call.</p>
+              <button 
+                onClick={(e) => e.preventDefault()}
+                className="inline-flex items-center px-6 py-2 bg-brand-600 text-white font-bold rounded-lg hover:bg-brand-700 transition-colors"
+              >
+                Launch Calendar (Zoho) <ArrowRight className="w-4 h-4 ml-2" />
+              </button>
+            </div>
+
+            <div className="flex items-center gap-4 mb-8">
+              <div className="h-px bg-slate-200 flex-1"></div>
+              <span className="text-xs font-bold text-slate-400 uppercase">Or Send a Message</span>
+              <div className="h-px bg-slate-200 flex-1"></div>
+            </div>
             
+            {/* Form - Ready for Zoho CRM Webform Integration */}
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -100,8 +131,8 @@ const Contact: React.FC = () => {
                 <textarea rows={4} className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none" placeholder="Tell us a bit about your goals..."></textarea>
               </div>
 
-              <button className="w-full py-3 bg-brand-600 text-white font-bold rounded-lg hover:bg-brand-700 transition-colors shadow-lg hover:shadow-brand-500/30">
-                Send Request
+              <button className="w-full py-3 bg-slate-900 text-white font-bold rounded-lg hover:bg-slate-800 transition-colors shadow-lg">
+                Submit Inquiry
               </button>
             </form>
           </div>

@@ -1,5 +1,16 @@
 import React, { useEffect } from 'react';
-import { ArrowLeft, Calendar, User, ShieldCheck, HelpCircle } from 'lucide-react';
+import { 
+  ArrowLeft, 
+  Calendar, 
+  User, 
+  ShieldCheck, 
+  HelpCircle, 
+  Percent, 
+  Briefcase, 
+  MonitorCheck, 
+  Landmark, 
+  AlertTriangle 
+} from 'lucide-react';
 
 interface BlogPostProps {
   onBack: () => void;
@@ -23,12 +34,24 @@ const BlogPost: React.FC<BlogPostProps> = ({ onBack }) => {
           Back to Services
         </button>
 
+        {/* Hero Image */}
+        <div className="relative h-64 md:h-96 w-full rounded-2xl overflow-hidden shadow-xl mb-10 group">
+          <img 
+            src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop" 
+            alt="Financial documents and calculator" 
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent"></div>
+          <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8">
+            <span className="bg-brand-500 text-white px-3 py-1 rounded-full font-bold text-xs uppercase tracking-wide shadow-md">
+              Tax Strategy
+            </span>
+          </div>
+        </div>
+
         {/* Header */}
         <header className="mb-12 border-b border-slate-100 pb-8">
           <div className="flex items-center gap-4 text-sm text-slate-500 mb-4">
-            <span className="bg-brand-50 text-brand-700 px-3 py-1 rounded-full font-semibold text-xs uppercase tracking-wide">
-              Tax Compliance
-            </span>
             <span className="flex items-center">
               <Calendar className="w-4 h-4 mr-1" />
               December 2025
@@ -48,11 +71,19 @@ const BlogPost: React.FC<BlogPostProps> = ({ onBack }) => {
 
         {/* Content */}
         <article className="prose prose-lg prose-slate max-w-none text-slate-700">
-          <p className="lead">
-            We provide a clear, actionable roadmap for navigating impending changes to <strong>VAT rates, PAYE reconciliation rules, and SARS's digital systems</strong>.
-          </p>
+          <div className="bg-brand-50 border-l-4 border-brand-500 p-6 rounded-r-xl mb-10">
+            <p className="lead m-0 font-medium text-brand-900">
+              We provide a clear, actionable roadmap for navigating impending changes to <strong>VAT rates, PAYE reconciliation rules, and SARS's digital systems</strong>.
+            </p>
+          </div>
 
-          <h2 className="text-2xl font-serif font-bold text-slate-900 mt-12 mb-6">Key SARS Compliance Changes for 2026: What You Must Know</h2>
+          <div className="flex items-center gap-4 mt-12 mb-6">
+            <div className="p-3 bg-red-100 text-red-600 rounded-xl">
+              <AlertTriangle className="w-6 h-6" />
+            </div>
+            <h2 className="text-2xl font-serif font-bold text-slate-900 m-0">Key SARS Compliance Changes</h2>
+          </div>
+          
           <p>
             The 2026 tax year introduces stricter enforcement and critical procedural shifts that require your attention now.
           </p>
@@ -68,7 +99,13 @@ const BlogPost: React.FC<BlogPostProps> = ({ onBack }) => {
             </li>
           </ul>
 
-          <h2 className="text-2xl font-serif font-bold text-slate-900 mt-12 mb-6">Practical VAT Compliance Steps for 2026</h2>
+          <div className="flex items-center gap-4 mt-12 mb-6">
+            <div className="p-3 bg-indigo-100 text-indigo-600 rounded-xl">
+              <Percent className="w-6 h-6" />
+            </div>
+            <h2 className="text-2xl font-serif font-bold text-slate-900 m-0">Practical VAT Compliance Steps</h2>
+          </div>
+
           <p>
             While the much discussed VAT rate increase to 16% scheduled for <strong>1 April 2026</strong> was proposed in the March 2025 budget, it is crucial to note that subsequent legislation introduced in April 2025 proposed maintaining the rate at 15%. Businesses should monitor the final parliamentary approval of the <em>Rates and Monetary Amounts and the Amendment of Revenue Laws Bill</em> for confirmation.
           </p>
@@ -92,7 +129,13 @@ const BlogPost: React.FC<BlogPostProps> = ({ onBack }) => {
             </li>
           </ol>
 
-          <h2 className="text-2xl font-serif font-bold text-slate-900 mt-12 mb-6">VAT Rate Changes and Cash Flow Planning</h2>
+          <div className="flex items-center gap-4 mt-12 mb-6">
+            <div className="p-3 bg-emerald-100 text-emerald-600 rounded-xl">
+              <Landmark className="w-6 h-6" />
+            </div>
+            <h2 className="text-2xl font-serif font-bold text-slate-900 m-0">VAT Rate Changes and Cash Flow Planning</h2>
+          </div>
+
           <p>The uncertainty around the 2026 rate underscores the need for flexible cash flow planning. Here’s how to model different scenarios:</p>
           <ul className="list-disc pl-6 space-y-4 mb-8">
             <li><strong>Scenario Planning</strong>: Create separate cash flow forecasts for a stable 15% rate and an increased 16% rate. This will help you visualize the impact on both your output tax (collected from customers) and input tax (paid to suppliers).</li>
@@ -101,7 +144,13 @@ const BlogPost: React.FC<BlogPostProps> = ({ onBack }) => {
             <li><strong>Reconcile Proactively</strong>: Meticulous record-keeping and timely VAT return submissions are essential to avoid penalties and ensure you are correctly claiming input tax deductions, which improves cash flow.</li>
           </ul>
 
-          <h2 className="text-2xl font-serif font-bold text-slate-900 mt-12 mb-6">Employer Obligations for PAYE in 2026: A Checklist</h2>
+          <div className="flex items-center gap-4 mt-12 mb-6">
+            <div className="p-3 bg-amber-100 text-amber-600 rounded-xl">
+              <Briefcase className="w-6 h-6" />
+            </div>
+            <h2 className="text-2xl font-serif font-bold text-slate-900 m-0">Employer Obligations for PAYE</h2>
+          </div>
+
           <div className="overflow-x-auto my-8">
             <table className="w-full text-left border-collapse bg-white shadow-sm rounded-lg overflow-hidden border border-slate-200">
               <thead className="bg-brand-50 text-brand-900">
@@ -144,7 +193,13 @@ const BlogPost: React.FC<BlogPostProps> = ({ onBack }) => {
             Additionally, ensure your payroll software is updated with the latest <strong>2026 tax tables, rebates, and thresholds</strong> announced in the annual budget.
           </p>
 
-          <h2 className="text-2xl font-serif font-bold text-slate-900 mt-12 mb-6">Your 2026 SARS eFiling Registration and Setup Checklist</h2>
+          <div className="flex items-center gap-4 mt-12 mb-6">
+            <div className="p-3 bg-sky-100 text-sky-600 rounded-xl">
+              <MonitorCheck className="w-6 h-6" />
+            </div>
+            <h2 className="text-2xl font-serif font-bold text-slate-900 m-0">SARS eFiling Registration Checklist</h2>
+          </div>
+
           <ol className="list-decimal pl-6 space-y-4 mb-8">
             <li><strong>Gather Required Documents</strong>: Before starting, prepare digital copies of identity documents, proof of business address (e.g., a utility bill less than 3 months old), and relevant business formation documents (e.g., CK1 for companies, trust deed).</li>
             <li><strong>Initiate Registration</strong>: Visit the <a href="https://www.sars.gov.za" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline font-semibold">SARS eFiling website</a> and click "REGISTER".</li>
@@ -167,7 +222,9 @@ const BlogPost: React.FC<BlogPostProps> = ({ onBack }) => {
           {/* Q&A Section */}
           <section className="bg-slate-50 p-8 rounded-2xl border border-slate-100">
             <div className="flex items-center gap-3 mb-6">
-              <HelpCircle className="w-8 h-8 text-brand-600" />
+              <div className="bg-brand-100 p-2 rounded-full">
+                <HelpCircle className="w-6 h-6 text-brand-600" />
+              </div>
               <h2 className="text-2xl font-serif font-bold text-slate-900 m-0">Frequently Asked Questions</h2>
             </div>
             
@@ -194,8 +251,13 @@ const BlogPost: React.FC<BlogPostProps> = ({ onBack }) => {
             </div>
           </section>
 
-          <div className="mt-8 p-4 bg-yellow-50 border border-yellow-100 rounded-lg text-xs text-yellow-800">
-            <strong>Disclaimer</strong>: This guide synthesizes information from SARS publications, government announcements, and professional tax alerts available as of December 2025. Tax laws are subject to change. This article is for informational purposes and should not be construed as formal tax advice. For advice tailored to your specific situation, please consult a qualified tax professional.
+          <div className="mt-8 p-4 bg-yellow-50 border border-yellow-100 rounded-lg text-xs text-yellow-800 flex gap-3">
+             <div className="shrink-0 mt-0.5">
+               <AlertTriangle className="w-4 h-4" />
+             </div>
+             <p>
+               <strong>Disclaimer</strong>: This guide synthesizes information from SARS publications, government announcements, and professional tax alerts available as of December 2025. Tax laws are subject to change. This article is for informational purposes and should not be construed as formal tax advice. For advice tailored to your specific situation, please consult a qualified tax professional.
+             </p>
           </div>
 
         </article>
