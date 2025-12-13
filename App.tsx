@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// Integrated Wellth Solutions Main App Structure
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Philosophy from './components/Philosophy';
